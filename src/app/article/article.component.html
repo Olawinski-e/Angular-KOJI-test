@@ -1,0 +1,21 @@
+<div class="fond">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title
+        ><strong>Titre: </strong>{{ article?.title }}</mat-card-title
+      ><mat-card-subtitle
+        ><strong>N° article: </strong>{{ article?.id }}</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{ article?.body }}
+      </p>
+    </mat-card-content>
+    <div>
+      <button [routerLink]="['/liste']" mat-flat-button color="accent">
+        back
+      </button>
+    </div>
+  </mat-card>
+</div>

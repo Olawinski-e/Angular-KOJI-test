@@ -1,27 +1,70 @@
-# KojiTest
+# Énoncé:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
+Vous êtes dans la peau d'un.e développeur.se travaillant sur un nouveau projet pour une application métier d'édition de contenu à imprimer.
 
-## Development server
+Vous êtes responsable de la réalisation du front de l'application. Il a été décidé que l'application serait en Typescript avec Angular.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Durant la réunion de cadrage vous avez eu les informations suivantes:
 
-## Code scaffolding
+- L'application doit posséder un système d'authentification avec une gestion des roles simple (utilisateur, admin)
+- L'administrateur doit pouvoir ajouter un certain nombre de documents type avec les données nécessaires à la génération. Ces documents sont considérés comme des "templates".
+- Un utilisateur peut accéder uniquement à ses documents générés
+- Un utilisateur doit pouvoir générer un document depuis un "template" créer par un administrateur en fournissant les champs requis.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Questions de réflexion:
 
-## Build
+Vous devez répondre aux questions suivantes (chaque question attend une réponse suivie d'une explication):
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Quelle librairie allez vous utiliser pour gérer l'état de l'application ?
 
-## Running unit tests
+- Je ne suis pas sûre de bien comprendre la question.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Quelles sont les pages nécessaires ?
 
-## Running end-to-end tests
+##### Les pages nécéssaires seraient
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- S'enregistrer / Se connecter pour l'authentification (qui auront chacun leur composant)
+- Chaque nouvel enregistrement définira le nouvel utilisateur comme utilisateur simple
+- Un composant Navbar dans lequel il y aurait un bouton en plus "création template" si admin
+- Une page CreationTemplate avec composants "création template" et "liste templates déjà crées" accessible que admin
+- Une page DocumentsGeneres & une page CreerDocument
 
-## Further help
+## Comment allez-vous agencer votre navigation ?
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- La navigation fonctionnera avec le router Angular, par routes qui seront toutes ouvertes sauf la route /admin qui aura une Guard basée sur son rôle et il fonctionnera par la Navbar décrite plus haut.
+
+## Quelles sont les requêtes d'api dont vous allez avoir besoin au minimum ?
+
+Au minimum,
+
+#### Auth :
+
+post pour l'enregistrement,
+post pour la connection.
+
+#### Admin :
+
+get pour tous les templates existants,
+post pour un nouveau template
+
+#### Utilisateur :
+
+get les templates générés (documents types) et disponibles par admin,
+get pour les documents types déjà générés par l'utilisateur,
+post pour générer un nouveau documents type
+
+## Comment allez-vous gérer l'exécution des requêtes d'api et le retour asynchrone de celles-ci ?
+
+- Mon composant va interroger le service qui aura un retour asynchrone géré par le subscribe. L'éxécution sera avec le httpClientModule
+
+## Comment allez-vous gérer l'authentification ?
+
+- Avec une clé JWT qui sera affiliée automatiquement lors du login et supprimée lors du logout
+
+## Bonus: Vous devez mettre en place une version "dark" optionnel dans l'application. Comment allez-vous procéder ?
+
+- Je créer un thème 'dark' en scss qui surclasse pour changer les couleurs. (Les ordinateurs ayant maintenant des thèmes "sombres" l'os peut le reconnaitre et l'afficher comme tel si besoin).
+
+# Cas pratique:
+
+Vous devez mettre en place une application Angular utilisant les méthodes sélectionnées. Cette application devra posséder une page avec une liste d'articles et une par article. Les articles doivent provenir de l'api suivante: https://jsonplaceholder.typicode.com/.

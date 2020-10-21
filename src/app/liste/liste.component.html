@@ -1,0 +1,16 @@
+<mat-card *ngFor="let article of articles">
+  <mat-card-header>
+    <mat-card-title
+      ><strong>Titre: </strong> {{ article?.title }}</mat-card-title
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <button
+      mat-flat-button
+      color="primary"
+      [routerLink]="['/article/' + article.id]"
+    >
+      En savoir plus
+    </button>
+  </mat-card-content>
+</mat-card>

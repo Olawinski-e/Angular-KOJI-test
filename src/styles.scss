@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@400;600&display=swap");
+
+html {
+  background: linear-gradient(#e66465, #9198e5);
+}
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Commissioner", sans-serif;
+}
+
+.fond {
+  height: 88vh;
+}
+
+.mat-card {
+  font-family: "Commissioner", sans-serif;
+  width: 50%;
+  margin: 2% auto;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  &:first-child {
+    margin: 10% auto 2%;
+  }
+
+  .mat-card-content {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
